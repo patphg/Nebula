@@ -1633,18 +1633,18 @@ if ( !trait_exists('Functions') ){
 						echo '<span itemprop="name">' . $node_text . '</span>';
 
 						if ( !empty($node_url) ){
-							echo '</a><meta itemprop="position" content="' . $position . '" /></li>';
-						}
-
-						echo ' ' . $data['delimiter_html'] . ' ';
+							echo '</a><meta itemprop="position" content="' . $position . '" />';
+							if ( !empty($data['current']) ){
+								echo $data['current_node'] . '<meta itemprop="position" content="' . $position . '" />' . $data['after'];
+								echo ' ' . $data['delimiter_html'] . ' ';
+							}
+							echo '</li>';
+						}						
 					}
 
 					$position++;
 				}
 
-				if ( !empty($data['current']) ){
-					echo $data['current_node'] . '<meta itemprop="position" content="' . $position . '" />' . $data['after'];
-				}
 
 				echo '</ol>';
 			} elseif ( is_home() || is_front_page() ){
